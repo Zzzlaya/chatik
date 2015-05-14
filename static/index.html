@@ -8,20 +8,20 @@
 </head>
 
 <body>
-    <div class="b_sockets_chatters"></div>
-    <div class="b_sockets_messages"></div>
+    <div class="b_chatik_chatters js_chatik_chatters"></div>
+    <div class="b_chatik_messages js_chatik_messages"></div>
     <div>
-        <form class="b_sockets_form js_sockets_form">
-            <input type="text" name="myText" class="js_sockets_form_input" autofocus required/>
-            <button type="submit" class="b_sockets_form_button">Send</button>
+        <form class="b_chatik_form js_chatik_form">
+            <input type="text" name="myText" class="b_chatik_form_input js_chatik_form_input" autofocus required/>
+            <button type="submit" class="b_chatik_form_button">Send</button>
         </form>
     </div>
     <script>
     var socket = io.connect('http://localhost:8080'),
-        form = document.querySelector('.js_sockets_form'),
+        form = document.querySelector('.js_chatik_form'),
         div = document.createElement('div'),
-        messagesDiv = document.querySelector('.b_sockets_messages'),
-        chattersDiv = document.querySelector('.b_sockets_chatters'),
+        messagesDiv = document.querySelector('.js_chatik_messages'),
+        chattersDiv = document.querySelector('.js_chatik_chatters'),
         statusDiv,
         userDiv,
         userToRemove;
@@ -43,14 +43,14 @@
 
     socket.on('add chatter', function(name) {
         userDiv = div.cloneNode();
-        userDiv.className = 'b_sockets_chatters_name';
+        userDiv.className = 'js_chatik_chatters_name';
         userDiv.setAttribute('data-name', name);
         userDiv.textContent = name;
         chattersDiv.appendChild(userDiv);
     });
 
     socket.on('remove chatter', function(name) {
-        userToRemove = document.querySelector('.b_sockets_chatters_name[data-name="' + name + '"]');
+        userToRemove = document.querySelector('.js_chatik_chatters_name[data-name="' + name + '"]');
         userToRemove.remove();
     });
 
@@ -62,7 +62,7 @@
     }
 
     function sendFormContent(event) {
-        var messageInput = document.querySelector('.js_sockets_form_input'),
+        var messageInput = document.querySelector('.js_chatik_form_input'),
             message = messageInput.value;
 
         if (event.preventDefault) {
