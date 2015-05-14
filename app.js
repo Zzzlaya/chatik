@@ -65,7 +65,11 @@ io.on('connection', function(client) {
         storeMessage(nickname, data);
     });
 });
+
+app.use('/static', express.static(__dirname + '/static'));
+
 app.get('/', function(request, response) {
-    response.sendFile(__dirname + '/sources/index.html');
+    response.sendFile(__dirname + '/static/index.html');
 });
+
 server.listen(8080);
