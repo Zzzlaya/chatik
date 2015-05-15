@@ -1,7 +1,88 @@
-body {
-    background: #FFF;
+html {
+    box-sizing: border-box;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
 
+body {
+    background: lightblue;
+    padding: 1em;
+}
 
+.b_chatik_wrapper {
+    display: flex;
+    /*flex-direction: column;*/
+    /*flex-wrap: nowrap;*/
+    
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 960px;
+    margin: 0 auto;
+    border: 2px solid grey;
+    border-radius: 30px 10px;
+    overflow: hidden;
+}
 
+.b_chatik_chatters {
+    background: lightgray;
+    order: 1;
+    /*flex-grow: 0;*/
+    /*flex-shrink: 1;*/
+    /*flex-basis: auto;*/
+    
+    flex: 1 100%;
+    padding: 1em;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.b_chatik_chatters_name {
+    background: lightgreen;
+    padding: 0.5em;
+    margin: 0.5em;
+    flex: 1 auto;
+    border: none;
+    border-radius: 15px 5px;
+}
+
+.b_chatik_messages {
+    background: #FFF;
+    order: 2;
+    /*flex-grow: 1;*/
+    /*flex-shrink: 1;*/
+    /*flex-basis: auto;*/
+    
+    flex: 1 100%;
+    padding: 1em;
+}
+
+.b_chatik_form {
+    background: lightyellow;
+    order: 3;
+    flex: 1 100%;
+    padding: 1em;
+}
+/* medium to large screens */
+
+@media all and (min-width: 800px) {
+    .b_chatik_chatters {
+        flex-flow: column nowrap;
+        order: 2;
+        flex: 1 auto;
+    }
+    .b_chatik_chatters_name {
+        flex: 1 100%;
+    }
+    .b_chatik_messages {
+        order: 1;
+        flex: 1 auto;
+    }
+    .b_chatik_form {
+        order: 3;
+    }
+}
