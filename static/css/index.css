@@ -1,6 +1,9 @@
 html {
     box-sizing: border-box;
-    font-size: 18px;
+    font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+    font-size: 16px;
+    color: #000;
+    line-height: 1.5;
 }
 
 *,
@@ -12,6 +15,7 @@ html {
 body {
     background: lightblue;
     padding: 1em;
+    font-size: 1.2em;
 }
 
 .b_chatik_wrapper {
@@ -23,6 +27,7 @@ body {
     justify-content: space-between;
     align-items: stretch;
     max-width: 960px;
+    min-width: 480px;
     margin: 0 auto;
     border: 2px solid grey;
     border-radius: 30px 10px;
@@ -62,31 +67,40 @@ body {
     padding: 1em;
 }
 
-.b_chatik_form {
+.b_chatik_form_wrapper {
+    display: flex;
+    flex-flow: row nowrap;
     background: lightyellow;
     order: 3;
     flex: 1 100%;
     padding: 1em;
 }
 
+.b_chatik_form {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
 .b_chatik_form_input {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 4.5em;
+    display: flex;
+    justify-content: center;
     padding: 0 0.5em;
-    width: 30em;
+    flex: 1 auto;
+    font-size: inherit;
+    min-width: 16em;
 }
 
 .b_chatik_form_button {
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    flex: 1 auto;
     border: 1px solid #CCC;
     background: lightblue;
     height: 3em;
     width: 5em;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: inherit;
     margin: 0 0.5em;
 }
 /* medium to large screens */
@@ -104,7 +118,7 @@ body {
         order: 1;
         flex: 1 auto;
     }
-    .b_chatik_form {
+    .b_chatik_form_wrapper {
         order: 3;
     }
 }
