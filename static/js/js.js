@@ -12,6 +12,7 @@
         nickname = prompt('What\'s your name, dude?');
         socket.emit('join', nickname, function(name) {
             statusDiv = div.cloneNode();
+            statusDiv.className = 'b_chatik_messages_message';
             statusDiv.textContent = name + ' joined the conversation';
             messagesDiv.appendChild(statusDiv);
         });
@@ -19,6 +20,7 @@
 
     socket.on('messages', function(data) {
         messageDiv = div.cloneNode();
+        messageDiv.className = 'b_chatik_messages_message';
         messageDiv.textContent = data;
         messagesDiv.appendChild(messageDiv);
     });
