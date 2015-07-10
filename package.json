@@ -10,7 +10,7 @@
     ],
     "main": "app.js",
     "author": "Tatiana Trubitcyna <trubitcyna.tatiana@gmail.com>",
-    "license": "CC-BY-NC-ND-4.0",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/Zzzlaya/chatik.git"
