@@ -15,6 +15,9 @@
         "type": "git",
         "url": "https://github.com/Zzzlaya/chatik.git"
     },
+    "scripts": {
+        "start": "redis-cli shutdown & redis-server & node app"
+    },
     "dependencies": {
         "express": "~4.12.3",
         "redis": "~0.12.1",
