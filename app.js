@@ -2,6 +2,7 @@ var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io')(server),
+    sassMiddleware = require('node-sass-middleware'),
     // don't forget to start "redis-server"
     redis = require('redis'),
     redisClient = redis.createClient(),
@@ -65,6 +66,14 @@ io.on('connection', function(client) {
         storeMessage(nickname, data);
     });
 });
+
+app.use(sassMiddleware({
+    /* Options */
+    src: __dirname,
+    dest: __dirname,
+    debug: true,
+    outputStyle: 'compressed',
+}));
 
 app.use('/static', express.static(__dirname + '/static'));
 

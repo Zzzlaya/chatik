@@ -1,0 +1,227 @@
+// Flexbox Mixins
+// http://philipwalton.github.io/solved-by-flexbox/
+// https://github.com/philipwalton/solved-by-flexbox
+// 
+// Copyright (c) 2013 Brian Franco
+//
+@mixin flexbox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin flex-flow($values: (row nowrap)) {
+    // No Webkit Box fallback.
+    -webkit-flex-flow: $values;
+    -moz-flex-flow: $values;
+    -ms-flex-flow: $values;
+    flex-flow: $values;
+}
+
+@mixin order($int: 0) {
+    -webkit-box-ordinal-group: $int + 1;
+    -webkit-order: $int;
+    -moz-order: $int;
+    -ms-flex-order: $int;
+    order: $int;
+}
+
+@mixin justify-content($value: flex-start) {
+    @if $value == flex-start {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+    } @else if $value == flex-end {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+    } @else if $value == space-between {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+    } @else if $value == space-around {
+        -ms-flex-pack: distribute;      
+    } @else {
+        -webkit-box-pack: $value;
+        -ms-flex-pack: $value;
+    }
+    -webkit-justify-content: $value;
+    -moz-justify-content: $value;
+    justify-content: $value;
+}
+
+@mixin align-items($value: stretch) {
+    @if $value == flex-start {
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+    } @else if $value == flex-end {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+    } @else {
+        -webkit-box-align: $value;
+        -ms-flex-align: $value;
+    }
+    -webkit-align-items: $value;
+    -moz-align-items: $value;
+    align-items: $value;
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+    
+    // Set a variable to be used by box-flex properties
+    $fg-boxflex: $fg;
+
+    // Box-Flex only supports a flex-grow value so let's grab the
+    // first item in the list and just return that.
+    @if type-of($fg) == 'list' {
+        $fg-boxflex: nth($fg, 1);
+    }
+
+    -webkit-box-flex: $fg-boxflex;
+    -webkit-flex: $fg $fs $fb;
+    -moz-box-flex: $fg-boxflex;
+    -moz-flex: $fg $fs $fb;
+    -ms-flex: $fg $fs $fb;
+    flex: $fg $fs $fb;
+}
+
+// Chatik styles
+
+html {
+    box-sizing: border-box;
+    font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+    font-size: 16px;
+    color: #000;
+    line-height: 1.5;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    background: lightblue;
+    padding: 0 1em;
+    font-size: 1.2em;
+}
+
+.b_chatik_container {
+    @include flexbox;
+    /*flex-direction: column;*/
+    /*flex-wrap: nowrap;*/
+    
+    @include flex-flow(row wrap);
+    @include justify-content(space-between);
+    max-width: 960px;
+    min-width: 480px;
+    margin: 0 auto;
+}
+
+.b_chatik_wrapper {
+    @include flexbox;
+    /*flex-direction: column;*/
+    /*flex-wrap: nowrap;*/
+    
+    @include flex-flow(row wrap);
+    @include flex(1 100%);
+    @include justify-content(space-between);
+    @include align-items(stretch);
+    border: 2px solid grey;
+    border-radius: 30px 10px;
+    overflow: hidden;
+}
+
+.b_chatik_chatters {
+    background: lightgray;
+    @include order(1);
+    /*flex-grow: 0;*/
+    /*flex-shrink: 1;*/
+    /*flex-basis: auto;*/
+    
+    @include flex(1 100%);
+    padding: 1em;
+    @include flexbox;
+    @include flex-flow(row wrap);
+}
+
+.b_chatik_chatters_name {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    background: #CCFF99;
+    padding: 0.5em;
+    margin: 0.5em;
+    @include flex(1 auto);
+    border: 1px solid #AAA;
+    border-radius: 15px 5px;
+}
+
+.b_chatik_messages {
+    background: #FFF;
+    @include order(2);
+    /*flex-grow: 1;*/
+    /*flex-shrink: 1;*/
+    /*flex-basis: auto;*/
+    
+    @include flex(1 100%);
+    padding: 1em;
+}
+
+.b_chatik_form_wrapper {
+    @include flexbox;
+    @include flex-flow(row nowrap);
+    background: #FFFFCC;
+    @include order(3);
+    @include flex(1 100%);
+    padding: 1em;
+}
+
+.b_chatik_form {
+    @include flexbox;
+    @include flex-flow(row nowrap);
+}
+
+.b_chatik_form_input {
+    @include flexbox;
+    @include justify-content(center);
+    padding: 0 0.5em;
+    @include flex(1 auto);
+    font-size: inherit;
+    min-width: 16em;
+    height: 3em;
+    border: 1px solid #CCC;
+}
+
+.b_chatik_form_button {
+    @include flexbox;
+    @include justify-content(center);
+    @include flex(1 auto);
+    border: 1px solid #CCC;
+    background: lightblue;
+    height: 3em;
+    width: 5em;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: inherit;
+    margin: 0 0.5em;
+}
+/* medium to large screens */
+
+@media all and (min-width: 800px) {
+    .b_chatik_chatters {
+        @include flex-flow(column nowrap);
+        @include order(2);
+        @include flex(1 auto);
+    }
+    .b_chatik_chatters_name {
+        @include flex(1 100%);
+    }
+    .b_chatik_messages {
+        @include order(1);
+        @include flex(1 auto);
+    }
+    .b_chatik_form_wrapper {
+        @include order(3);
+    }
+}
