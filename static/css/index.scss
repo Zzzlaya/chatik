@@ -108,6 +108,10 @@ body {
     font-size: 1.2em;
 }
 
+h1 {
+    color: #336699;
+}
+
 .b_chatik_container {
     @include flexbox;
     /*flex-direction: column;*/
@@ -228,7 +232,6 @@ body {
     height: 3em;
     max-width: 5em;
     min-width: 5em;
-    border-radius: 6px;
     cursor: pointer;
     font-size: inherit;
     color: #FFF;
