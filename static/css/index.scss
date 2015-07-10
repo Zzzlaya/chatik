@@ -152,13 +152,31 @@ body {
     @include flex(1 auto);
     padding: 1em;
     margin: 0.5em;
-    border-bottom: 3px solid #99CC33;
+    border-bottom: 1px solid #99CC33;
     border-left: none;
+}
+
+.b_chatik_chatters_name:first-child {
+    margin: 0.5em 0.5em 0.5em 0;
+}
+
+.b_chatik_chatters_name:last-child {
+    margin: 0.5em 0 0.5em 0.5em;
+}
+
+.b_chatik_chatters_name:only-child {
+    margin: 0.5em 0;
+}
+
+.b_chatik_messages_wrapper {
+    @include flex-flow(column nowrap);
+    @include order(2);
+    @include flex(1 100%);
 }
 
 .b_chatik_messages {
     background: #FFF;
-    @include order(2);
+    @include order(1);
     /*flex-grow: 1;*/
     /*flex-shrink: 1;*/
     /*flex-basis: auto;*/
@@ -168,11 +186,11 @@ body {
 }
 
 .b_chatik_messages_message {
-    padding: 0 0 0.5em 0;
+    margin: 0 0 0.5em 0;
 }
 
 .b_chatik_messages_message:last-child {
-    padding: 0;
+    margin: 0;
 }
 
 .b_chatik_form_wrapper {
@@ -187,13 +205,14 @@ body {
 .b_chatik_form {
     @include flexbox;
     @include flex-flow(row nowrap);
+    @include flex(1 100%);
 }
 
 .b_chatik_form_input {
     @include flexbox;
     @include justify-content(center);
     padding: 0 0.5em;
-    @include flex(1 auto);
+    @include flex(2 1 auto);
     font-size: inherit;
     min-width: 16em;
     height: 3em;
@@ -207,12 +226,13 @@ body {
     border: 1px solid #CCC;
     background: #336699;
     height: 3em;
-    width: 5em;
+    max-width: 5em;
+    min-width: 5em;
     border-radius: 6px;
     cursor: pointer;
     font-size: inherit;
     color: #FFF;
-    margin: 0 0.5em;
+    margin: 0 0 0 0.5em;
 }
 /* medium to large screens */
 
@@ -226,14 +246,20 @@ body {
     .b_chatik_chatters_name {
         @include flex(1 100%);
         @include justify-content(flex-start);
-        border-left: 3px solid #99CC33;
+        border-left: 1px solid #99CC33;
         border-bottom: none;
     }
-    .b_chatik_messages {
+    .b_chatik_chatters_name:first-child {
+        margin: 0 0.5em 0.5em 0.5em;
+    }
+    .b_chatik_chatters_name:last-child {
+        margin: 0.5em 0.5em 0 0.5em;
+    }
+    .b_chatik_chatters_name:only-child {
+        margin: 0 0.5em;
+    }
+    .b_chatik_messages_wrapper {
         @include order(1);
         @include flex(1 auto);
-    }
-    .b_chatik_form_wrapper {
-        @include order(3);
     }
 }
