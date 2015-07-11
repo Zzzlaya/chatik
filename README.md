@@ -2,6 +2,8 @@
 
 Built out of curiosity to learn Web Sockets and Flexbox.
 
+[See what app's UI looks like on Wiki](https://github.com/Zzzlaya/chatik/wiki)
+
 ## How to use
 1. Clone the repo: `git clone git@github.com:Zzzlaya/chatik.git`
 
