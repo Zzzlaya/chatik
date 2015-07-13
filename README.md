@@ -6,6 +6,9 @@ Built out of curiosity to learn Web Sockets and Flexbox.
 [See what app's UI looks like on Wiki](https://github.com/Zzzlaya/chatik/wiki)
 
 ## How to use
+
+**Note:** You need to have Redis to run this app. If you don't have one, please [quickly install Redis in 4 steps](http://redis.io/download#installation). 
+
 1. Clone the repo: `git clone git@github.com:Zzzlaya/chatik.git`
 
 2. Go into the app folder: `cd chatik`
