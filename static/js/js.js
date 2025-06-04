@@ -7,6 +7,7 @@
         statusDiv,
         userDiv,
         userToRemove;
+    var nickname;
 
     socket.on('connect', function(data) {
         nickname = prompt('What\'s your name, dude?');
@@ -19,7 +20,7 @@
     });
 
     socket.on('messages', function(data) {
-        messageDiv = div.cloneNode();
+        var messageDiv = div.cloneNode();
         messageDiv.className = 'b_chatik_messages_message';
         messageDiv.textContent = data;
         messagesDiv.appendChild(messageDiv);
